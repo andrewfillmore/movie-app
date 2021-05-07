@@ -5,5 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Ffaker::Name.female_name_with_prefix
-Ffaker::Movie.title
+movie = Movie.create(title: "In the Mood for Love", year: 2000, plot: "Wong Kar Wai film set in Hong Kong about a bond between two characters whose spouses are carrying on an affair")
+
+movie = Movie.create(title: "The Master", year: 2011, plot: "Based on the life of Scientology founder L. Ron Hubbard")
