@@ -1,14 +1,26 @@
 Rails.application.routes.draw do
-  get "/single_actor_query", controller: "actors", action: "single_actor_query"
+  # ACTORS ROUTES
 
-  get "/single_actor_params/:single_actor", controller: "actors", action: "single_actor_params"
+  get "/actors", controller: "actors", action: "index"
 
-  post "/single_actor_fullname", controller: "actors", action: "single_actor_fullname"
+  post "/actors", controller: "actors", action: "create"
 
-  get "/all_actor_path", controller: "actors", action: "single_actor_method"
+  get "actors/:id", controller: "actors", action: "show"
 
-  get "/single_movie_path", controller: "movies", action: "single_movie_method"
+  patch "/actors/:id", controller: "actors", action: "update"
 
-  get "/all_movie_path", controller: "movies", action: "all_movie_method"
+  delete "actors/:id", controller: "actors", action: "destroy"
+
+  # MOVIES ROUTES
+
+  get "/movies", controller: "movies", action: "index"
+
+  post "/movies", controller: "movies", action: "create"
+
+  get "/movies/:id", controller: "movies", action: "show"
+
+  patch "movies/:id", controller: "movies", action: "update"
+
+  delete "movies/:id", controller: "movies", action: "destroy"
 
 end

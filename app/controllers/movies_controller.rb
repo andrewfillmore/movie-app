@@ -1,16 +1,41 @@
 class MoviesController < ApplicationController
-  def single_movie_method
-    render json: Movie.find_by(id:1)
+  def index
+    movies = Movie.all
+    render json: movies.as_json
   end
-  def all_movie_method
-    require "http"
-    puts "Enter the id of the movie you'd like to see"
-    id = gets.chomp.to_i
- 
 
-    response = HTTP.get("http://localhost:3000/all_movie_path?id=#{id}")
-
-
-    render json: response.parse
+  def create
+    movie = Movie.new(
+    title: params[:title],
+    year: params[:year],
+    plot: params[:plot],
+    director: params[:director],
+    english: params[:english]
+    )
+    movie.save
+    render json: movie.as_json
   end
+
+  def show
+    movie = Movie.find(params[:id])
+    render json: movie.as_json   
+  end
+
+  def update
+    movie = Movie.find(params[:id])
+    movie.title = params[:title] || movie.title
+    movie.year = params[:year] || movie.year
+    movie.plot = params[:plot] || movie.plot
+    movie.director = params[:director] || movie.director
+    movie.english = params[:english]  || movie.english
+    movie.save
+    render json: movie.as_json
+  end
+
+  def destroy
+    movie = Movie.find(params[:id])
+    movie.delete
+    render json: movie.as_json
+  end
+  
 end
