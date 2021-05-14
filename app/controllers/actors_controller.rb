@@ -12,7 +12,7 @@ class ActorsController < ApplicationController
       gender: params[:gender],
       age: params[:age]
     )
-    actor.save
+    if actor.save
     render json: actor.as_json
   end
 
