@@ -23,4 +23,12 @@ Rails.application.routes.draw do
 
   delete "movies/:id", controller: "movies", action: "destroy"
 
+  # Users
+
+  post "/users", controller: "users", action: "create"
+
+  # Sessions
+
+  post "/sessions", controller: "sessions", action: "create"
+
 end
